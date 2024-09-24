@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 
 set(CMAKE_VERBOSE_MAKEFILE off)
 
+
 project(
     piper_phonemize
     VERSION 1.2.0
@@ -10,10 +11,10 @@ project(
     LANGUAGES CXX
 )
 
-# Force compiler to use UTF-8 for IPA constants
-add_compile_options("/utf-8")
+string(APPEND CMAKE_CXX_FLAGS " /utf-8")
+string(APPEND CMAKE_C_FLAGS " /utf-8")
 
-elseif(NOT APPLE)
+if(NOT APPLE)
     # Linux flags
     string(APPEND CMAKE_CXX_FLAGS " -Wall -Wextra -Wl,-rpath,'$ORIGIN'")
     string(APPEND CMAKE_C_FLAGS " -Wall -Wextra")
